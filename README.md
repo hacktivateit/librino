@@ -1,2 +1,8 @@
 # librino
-super small book manager
+super small books manager
+
+# BACKEND
+
+# DB
+
+# FRONTEND
