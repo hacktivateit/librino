@@ -16,7 +16,7 @@ app.use('/api',userRouter);
 app.use('/api',bookRouter);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello librino');
+  res.send('Hello, this is librino api backend, use the endpoint /api to talk with me');
 });
 
 app.listen(port, () => {
