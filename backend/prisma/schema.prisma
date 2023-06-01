@@ -24,7 +24,7 @@ model Book {
   author   String
   ISBN     String    @unique
   synopsis String?
-  library  Entry[]
+  owner    Entry[]
 }
 
 model Entry {
