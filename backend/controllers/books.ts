@@ -8,11 +8,14 @@ export const getAllBooks = async (
   res: Response
 ): Promise<void> => {
   try {
-    const allBooks: Book[] = await client.findMany({include: { library: true }});
+    const includeOwner = req.query.owner === "true";
+
+    const allBooks: Book[] = await client.findMany({ include: { owner: includeOwner }});
 
     res.status(200).json({ data: allBooks });
   } catch (error) {
-    console.log(error);
+    console.error("Error in getAllBooks:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -22,11 +25,18 @@ export const getBookById = async (
 ): Promise<void> => {
   try {
     const bookId = parseInt(req.params.id);
-    const book = await client.findUnique({ where: { id: bookId } });
+    const includeOwner = req.query.owner === "true";
 
-    res.status(200).json({ data: book });
+    const book = await client.findUnique({ where: { id: bookId }, include:{owner: includeOwner} });
+
+    if (book) {
+      res.status(200).json({ data: book });
+    } else {
+      res.status(404).json({ error: "Book not found" });
+    }
   } catch (error) {
-    console.log(error);
+    console.error("Error in getBookById:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -42,9 +52,11 @@ export const createBook = async (
 
     res.status(201).json({ data: book });
   } catch (error) {
-    console.log(error);
+    console.error("Error in createBook:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
+
 
 export const updateBook = async (
   req: Request,
@@ -58,9 +70,14 @@ export const updateBook = async (
       data: { ...bookData },
     });
 
-    res.status(200).json({ data: updatedBook });
+    if (updatedBook) {
+      res.status(200).json({ data: updatedBook });
+    } else {
+      res.status(404).json({ error: "Book not found" });
+    }
   } catch (error) {
-    console.log(error);
+    console.error("Error in updateBook:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -69,11 +86,16 @@ export const deleteBook = async (
   res: Response
 ): Promise<void> => {
   try {
-    const bookId  = parseInt(req.params.id);
-    await client.delete({ where: { id: bookId } });
+    const bookId = parseInt(req.params.id);
+    const deletedBook = await client.delete({ where: { id: bookId } });
 
-    res.status(200).json({ data: {} });
+    if (deletedBook) {
+      res.status(200).json({ data: {} });
+    } else {
+      res.status(404).json({ error: "Book not found" });
+    }
   } catch (error) {
-    console.log(error);
+    console.error("Error in deleteBook:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
