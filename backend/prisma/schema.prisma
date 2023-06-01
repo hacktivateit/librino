@@ -14,7 +14,7 @@ model User {
   id      Int       @id @default(autoincrement())
   name    String
   surname String
-  email   String
+  email   String    @unique
   library Entry[]
 }
 
@@ -22,7 +22,7 @@ model Book {
   id       Int       @id @default(autoincrement())
   title    String
   author   String
-  ISBN     String    @unique
+  ISBN     String
   synopsis String?
   owner    Entry[]
 }
