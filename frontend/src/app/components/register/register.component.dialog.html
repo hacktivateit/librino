@@ -1,1 +1,28 @@
-register!
+<h1 mat-dialog-title>Registration form</h1>
+<div mat-dialog-content>
+
+  <p>What's your name?</p>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" formControlName="name" required>
+  </mat-form-field>
+
+  <p>What's your surname?</p>
+  <mat-form-field>
+    <mat-label>Surname</mat-label>
+    <input matInput placeholder="Username" formControlName="username">
+  </mat-form-field>
+
+  <p>What's your email?</p>
+  <mat-form-field>
+    <mat-label>email</mat-label>
+    <input matInput placeholder="matteo@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button>Register</button>
+</div>
+
