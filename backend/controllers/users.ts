@@ -25,6 +25,12 @@ export const getUserById = async (
 ): Promise<void> => {
   try {
     const userId = parseInt(req.params.id);
+
+    if (isNaN(userId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
     const includeLibrary = req.query.library === "true";
 
     const user = await client.findUnique({ where: { id: userId }, include:{ library: includeLibrary } });
@@ -64,6 +70,12 @@ export const updateUser = async (
 ): Promise<void> => {
   try {
     const userId  = parseInt(req.params.id);
+
+    if (isNaN(userId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
     const userData = req.body;
     const updatedUser = await client.update({
       where: { id: userId },
@@ -87,6 +99,12 @@ export const deleteUser = async (
 ): Promise<void> => {
   try {
     const userId = parseInt(req.params.id);
+
+    if (isNaN(userId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
     const deletedUser = await client.delete({ where: { id: userId } });
 
     if (deletedUser) {

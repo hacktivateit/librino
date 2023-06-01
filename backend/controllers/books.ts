@@ -25,6 +25,12 @@ export const getBookById = async (
 ): Promise<void> => {
   try {
     const bookId = parseInt(req.params.id);
+
+    if (isNaN(bookId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
     const includeOwner = req.query.owner === "true";
 
     const book = await client.findUnique({ where: { id: bookId }, include:{owner: includeOwner} });
@@ -64,6 +70,12 @@ export const updateBook = async (
 ): Promise<void> => {
   try {
     const bookId  = parseInt(req.params.id);
+
+    if (isNaN(bookId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
     const bookData = req.body;
     const updatedBook = await client.update({
       where: { id: bookId },
@@ -87,6 +99,12 @@ export const deleteBook = async (
 ): Promise<void> => {
   try {
     const bookId = parseInt(req.params.id);
+
+    if (isNaN(bookId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
     const deletedBook = await client.delete({ where: { id: bookId } });
 
     if (deletedBook) {
