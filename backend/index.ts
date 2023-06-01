@@ -12,8 +12,8 @@ const port = process.env.PORT || 3000;
 // Use express json middleware
 app.use(express.json());
 
-app.use('/api',userRouter);
-app.use('/api',bookRouter);
+app.use('/api/user/',userRouter);
+app.use('/api/book/',bookRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, this is librino api backend, use the endpoint /api to talk with me');

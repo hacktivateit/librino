@@ -22,7 +22,7 @@ export const getUserById = async (
 ): Promise<void> => {
   try {
     const userId = parseInt(req.params.id);
-    const user = await client.findUnique({ where: { id: userId } });
+    const user = await client.findUnique({ where: { id: userId }, include: { library: true } });
 
     res.status(200).json({ data: user });
   } catch (error) {
