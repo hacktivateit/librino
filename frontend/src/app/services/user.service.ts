@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// I know it's ugly, but is the only way to have a unique source of thruth for the data models
+// I know it's ugly, but is the only way to have a unique source of thruth for the data models while developing
+// I need to solve this at the end for the dockerization
 // Prisma still doesn't support multiple output folder when generating the client
 // See:
 // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/generating-prisma-client#the-location-of-prisma-client
@@ -22,7 +23,7 @@ export class UserService {
     return this.http.get<User[]>(baseUrl);
   }
 
-  get(id: any): Observable<User> {
+  get(id: Number): Observable<User> {
     return this.http.get<User>(`${baseUrl}/${id}`);
   }
 
@@ -30,16 +31,12 @@ export class UserService {
     return this.http.post(baseUrl, data);
   }
 
-  update(id: any, data: any): Observable<any> {
+  update(id: Number, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  delete(id: any): Observable<any> {
+  delete(id: Number): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
-  }
-
-  deleteAll(): Observable<any> {
-    return this.http.delete(baseUrl);
   }
 }
 
