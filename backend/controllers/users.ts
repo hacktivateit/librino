@@ -59,7 +59,7 @@ export const getUserLibraryById = async (
     const user = await client.findUnique({  where: { id: userId },  include: { library: { include: { book: true} } } })
 
     if (user) {
-      res.status(200).json({ data: user.library });
+      res.status(200).json({ data: user.library});
     } else {
       res.status(404).json({ error: "User not found" });
     }

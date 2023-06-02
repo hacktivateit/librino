@@ -32,7 +32,7 @@ export class BooklistComponent implements OnInit{
       .subscribe({
         next: (data) =>{
           this.books = data;
-          console.log(this.books);
+          console.log(data);
         },
         error: (e) => console.error(e)
       });

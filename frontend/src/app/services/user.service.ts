@@ -23,9 +23,8 @@ export class UserService {
   }
 
   getLibrary(id: Number): Observable<Book[]> {
-    return this.http.get<Response>(`${baseUrl}/${id}`).pipe(map(i => i.data))
+    return this.http.get<Response>(`${baseUrl}/lib/${id}`).pipe(map(i => i.data))
   }
-
 
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
