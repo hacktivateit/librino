@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { Observable, map} from 'rxjs';
 import {Book} from '../models/book.model';
 
 interface Response { data: Book[] }

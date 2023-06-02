@@ -101,7 +101,7 @@ export const deleteBook = async (
     const bookId = parseInt(req.params.id);
 
     if (isNaN(bookId)) {
-      res.status(400).json({ error: "The ID must be a number" });
+      res.status(400).json({ error: "Invalid book ID" });
       return;
     }
 

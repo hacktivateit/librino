@@ -31,12 +31,7 @@ export const getUserById = async (
       return;
     }
 
-    const includeLibrary = req.query.library === "true";
-
-    const user = includeLibrary == true ?
-    await client.findUnique({  where: { id: userId },  include: { library: { include: { book: true} } } })
-    :
-    await client.findUnique({  where: { id: userId }});
+    const user = await client.findUnique({  where: { id: userId }});
 
     if (user) {
       res.status(200).json({ data: user });
@@ -45,6 +40,31 @@ export const getUserById = async (
     }
   } catch (error) {
     console.error("Error in getUserById:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const getUserLibraryById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const userId = parseInt(req.params.id);
+
+    if (isNaN(userId)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
+    const user = await client.findUnique({  where: { id: userId },  include: { library: { include: { book: true} } } })
+
+    if (user) {
+      res.status(200).json({ data: user.library });
+    } else {
+      res.status(404).json({ error: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error in getUserLibraryById:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

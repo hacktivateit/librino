@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { Book } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,7 +15,8 @@ export class BooklistComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService,
+    private userService: UserService,
   ){}
 
   ngOnInit(): void {
@@ -25,11 +28,11 @@ export class BooklistComponent implements OnInit{
     const id = Number(this.route.snapshot.paramMap.get('id'));
     console.log(id);
 
-    this.bookService.getAll()
+    this.userService.getLibrary(1)
       .subscribe({
         next: (data) =>{
           this.books = data;
-          console.log(data);
+          console.log(this.books);
         },
         error: (e) => console.error(e)
       });
