@@ -1,0 +1,24 @@
+<h1>Registration Form</h1>
+
+{{ model | json }}
+<form #regForm="ngForm" (ngSubmit)="addNewUser()">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" required [(ngModel)]="model.name" name="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Username" [(ngModel)]="model.surname" name="surname">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" required [(ngModel)]="model.email" name="email">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Register</button>
+</form>
+
+<div *ngIf="submitted">
+  <h4>Registration Complete</h4>
+</div>
+

@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-// I know it's ugly, but is the only way to have a unique source of thruth for the data models while developing
-// I need to solve this at the end for the dockerization
-// Prisma still doesn't support multiple output folder when generating the client
-// See:
-// https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/generating-prisma-client#the-location-of-prisma-client
-// https://github.com/prisma/prisma/issues/1787
-import { Book } from '../../../../backend/node_modules/@prisma/client';
+import {Book} from '../models/book.model';
 
 const baseUrl = 'http://localhost:4242/api/book';
 
