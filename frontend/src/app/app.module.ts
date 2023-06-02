@@ -4,10 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
-import { LoginComponent } from './components/login/login.component';
-import { LoginComponentDialog } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { RegisterComponentDialog } from './components/register/register.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 //Material
@@ -27,11 +23,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    //Dialogs
-    LoginComponent,
-    LoginComponentDialog,
-    RegisterComponent,
-    RegisterComponentDialog,
   ],
   providers: [],
   bootstrap: [AppComponent]
