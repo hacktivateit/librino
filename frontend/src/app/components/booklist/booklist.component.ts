@@ -11,12 +11,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./booklist.component.css']
 })
 export class BooklistComponent implements OnInit{
-  books?: Book[];
+  library?: Book[];
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService,
     private userService: UserService,
+    private BookService: BookService,
   ){}
 
   ngOnInit(): void {
@@ -25,14 +25,15 @@ export class BooklistComponent implements OnInit{
   }
 
   retrieveBooks(): void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(id);
+    // const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.userService.getLibrary(1)
+    // this.userService.getLibrary(id)
+    this.BookService.getAll()
       .subscribe({
         next: (data) =>{
-          this.books = data;
-          console.log(data);
+          this.library = data;
+          console.log(this.library);
+
         },
         error: (e) => console.error(e)
       });

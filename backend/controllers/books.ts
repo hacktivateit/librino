@@ -46,6 +46,31 @@ export const getBookById = async (
   }
 };
 
+export const getLibraryByUserId = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const uid = parseInt(req.params.id);
+
+    if (isNaN(uid)) {
+      res.status(400).json({ error: "The ID must be a number" });
+      return;
+    }
+
+    const libr = await client.findMany({where:{owner:{some:{userId:{equals: uid}}}},include:{owner:false}})
+
+    if (libr) {
+      res.status(200).json({ data: libr });
+    } else {
+      res.status(404).json({ error: "User  not found" });
+    }
+  } catch (error) {
+    console.error("Error in getLibraryByUserId:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 export const createBook = async (
   req: Request,
   res: Response
