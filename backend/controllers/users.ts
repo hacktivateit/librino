@@ -33,7 +33,7 @@ export const getUserById = async (
 
     const includeLibrary = req.query.library === "true";
 
-    const user = await client.findUnique({ where: { id: userId }, include:{ library: includeLibrary } });
+    const user = await client.findUnique({  where: { id: userId },  include: { library: { include: { book: includeLibrary } } } });
 
     if (user) {
       res.status(200).json({ data: user });
