@@ -5,7 +5,7 @@ export class Book {
   title?: string;
   author?: string;
   ISBN?: string;
-  synopsis?: string;
+  synopsis?: string | null;
   owner?: User[];
 }
 
