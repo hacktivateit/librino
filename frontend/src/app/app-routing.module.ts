@@ -6,8 +6,8 @@ import { BookComponent } from './components/book/book.component';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: 'register/', component: RegisterComponent },
-  { path: 'login/', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'booklist/:id', component: BooklistComponent },
   { path: 'book/:id', component: BookComponent },
 ];
