@@ -10,7 +10,7 @@ export const getAllUsers = async (
   try {
     const includeLibrary = req.query.library === "true";
 
-    const allUsers: User[] = await client.findMany({ include: { library: includeLibrary }});
+    const allUsers: User[] = await client.findMany({ include: { collection: includeLibrary }});
 
     res.status(200).json( allUsers );
   } catch (error) {

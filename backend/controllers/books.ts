@@ -51,7 +51,7 @@ export const getLibraryByUserId = async (
   res: Response
 ): Promise<void> => {
   try {
-    const uid = parseInt(req.params.id);
+    const uid = parseInt(req.params.userId);
 
     if (isNaN(uid)) {
       res.status(400).json({ error: "The ID must be a number" });
@@ -76,12 +76,26 @@ export const createBook = async (
   res: Response
 ): Promise<void> => {
   try {
+    const uid = parseInt(req.params.userId);
+
+    if (isNaN(uid)) {
+      res.status(400).json({ error: "The userId must be a number" });
+      return;
+    }
+
     const bookData = req.body;
-    const book = await client.create({
-      data: { ...bookData },
+    const newBook = await client.create({
+      data: {
+        ...bookData,
+        owner:{
+          create:[
+            {entry:{connect:{user:1}}}
+          ]
+        }
+      },
     });
 
-    res.status(201).json( book );
+    res.status(201).json(newBook);
   } catch (error) {
     console.error("Error in createBook:", error);
     res.status(500).json({ error: "Internal server error" });

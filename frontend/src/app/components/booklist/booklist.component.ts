@@ -22,9 +22,7 @@ export class BooklistComponent implements OnInit{
   }
 
   retrieveLib(): void{
-    const userId = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.bookService.getLibrary(userId)
+    this.bookService.getLibrary(1)
       .subscribe({
         next: (data) =>{
           this.library = data;

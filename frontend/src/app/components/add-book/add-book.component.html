@@ -1,1 +1,24 @@
-<p>add-book works!</p>
+<h1>Add book</h1>
+
+{{ model | json }}
+<form #regForm="ngForm" (ngSubmit)="addNewUser()">
+
+  <mat-form-field>
+    <input matInput placeholder="Title" required [(ngModel)]="model.title" name="title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Author" [(ngModel)]="model.author" name="author">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="ISBN" required [(ngModel)]="model.ISBN" name="">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Add book to your library</button>
+</form>
+
+<div *ngIf="submitted">
+  <h4>Added!</h4>
+</div>
+
