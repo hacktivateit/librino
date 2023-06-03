@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,11 +12,11 @@ export class RegisterComponent {
   model = new User();
   submitted = false;
 
-  constructor(private userService: UserService){}
+  constructor(private authService: AuthService){}
 
   addNewUser(){
     console.log(this.model);
-    this.userService.create(this.model)
+    this.authService.signup(this.model)
     .subscribe({
         next: (res) => {
           console.log(res);
