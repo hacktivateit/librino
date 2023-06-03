@@ -46,31 +46,8 @@ export const getBookById = async (
   }
 };
 
-export const getLibraryByUserId = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
-    const uid = parseInt(req.params.userId);
-
-    if (isNaN(uid)) {
-      res.status(400).json({ error: "The ID must be a number" });
-      return;
-    }
-
-    const libr = await client.findMany({where:{owner:{some:{userId:{equals: uid}}}},include:{owner:false}})
-
-    if (libr) {
-      res.status(200).json( libr );
-    } else {
-      res.status(404).json({ error: "User  not found" });
-    }
-  } catch (error) {
-    console.error("Error in getLibraryByUserId:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-};
-
+//A Book is always created by a user
+//SO the book i associated to that user
 export const createBook = async (
   req: Request,
   res: Response
@@ -83,15 +60,12 @@ export const createBook = async (
       return;
     }
 
+    //to fix
     const bookData = req.body;
     const newBook = await client.create({
       data: {
         ...bookData,
-        owner:{
-          create:[
-            {entry:{connect:{user:1}}}
-          ]
-        }
+        owner: { connect: { id: uid } }
       },
     });
 
@@ -140,7 +114,7 @@ export const deleteBook = async (
     const bookId = parseInt(req.params.id);
 
     if (isNaN(bookId)) {
-      res.status(400).json({ error: "Invalid book ID" });
+      res.status(400).json({ error: "The ID must be a number" });
       return;
     }
 

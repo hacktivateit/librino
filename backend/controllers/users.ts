@@ -8,9 +8,9 @@ export const getAllUsers = async (
   res: Response
 ): Promise<void> => {
   try {
-    const includeLibrary = req.query.library === "true";
+    const includeCollection = req.query.collection === "true";
 
-    const allUsers: User[] = await client.findMany({ include: { collection: includeLibrary }});
+    const allUsers: User[] = await client.findMany({ include: { collection: includeCollection }});
 
     res.status(200).json( allUsers );
   } catch (error) {
@@ -31,7 +31,9 @@ export const getUserById = async (
       return;
     }
 
-    const user = await client.findUnique({  where: { id: userId }});
+    const includeCollection = req.query.collection === "true";
+
+    const user = await client.findUnique({ where: { id: userId }, include:{collection: includeCollection} });
 
     if (user) {
       res.status(200).json( user);
