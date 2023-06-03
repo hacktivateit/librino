@@ -55,12 +55,12 @@ export const createBook = async (
   try {
     const uid = parseInt(req.params.userId);
 
+    //This userid thing will be removed when jwt token are implemented
     if (isNaN(uid)) {
       res.status(400).json({ error: "The userId must be a number" });
       return;
     }
 
-    //to fix
     const bookData = req.body;
     const newBook = await client.create({
       data: {

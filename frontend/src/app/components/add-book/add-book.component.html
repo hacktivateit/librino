@@ -12,7 +12,11 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="ISBN" required [(ngModel)]="model.ISBN" name="">
+    <input matInput placeholder="ISBN" required [(ngModel)]="model.ISBN" name="ISBN">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Synopsis" required [(ngModel)]="model.synopsis" name="synopsis">
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit">Add book to your library</button>

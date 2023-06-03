@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book.model'
-import { User } from 'src/app/models/user.model'
 import { BookService } from 'src/app/services/book.service'
 
 @Component({
@@ -17,10 +16,10 @@ export class AddBookComponent {
   addNewBook(){
     //For now the owner add by hand
     const id = 1;
-    //i will add it by the JWT token
+    //i will add it by the JWT token in the backend
 
     console.log(this.model);
-    this.bookService.create(this.model)
+    this.bookService.create(1,this.model)
     .subscribe({
         next: (res) => {
           console.log(res);
