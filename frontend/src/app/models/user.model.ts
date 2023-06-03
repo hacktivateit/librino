@@ -5,12 +5,14 @@ export class User {
   name?: string;
   surname?: string;
   email?: string;
-  library?: Book[];
+  collection?: Book[];
 }
 
-// I know it's ugly, but is the only way to have a unique source of thruth for the data models while developing
-// I need to solve this at the end for the dockerization
+//placeholder while developing, i will add the prisma generated types
+//import { User } from '../../../../backend/node_modules/@prisma/client';
+
 // Prisma still doesn't support multiple output folder when generating the client
 // See:
 // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/generating-prisma-client#the-location-of-prisma-client
 // https://github.com/prisma/prisma/issues/1787
+

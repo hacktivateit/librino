@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { Book } from 'src/app/models/book.model';
-import { BookService } from 'src/app/services/book.service';
+import { UserService } from 'src/app/services/user.service';
+import { Book} from 'src/app/models/book.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,11 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./booklist.component.css']
 })
 export class BooklistComponent implements OnInit{
-  library!: Book[];
+  //Collection will not be undefined in runtime
+  collection?: Book[]
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService,
+    private userService: UserService,
   ){}
 
   ngOnInit(): void {
@@ -22,12 +23,11 @@ export class BooklistComponent implements OnInit{
   }
 
   retrieveLib(): void{
-    this.bookService.getLibrary(1)
+    this.userService.getLibrary(1)
       .subscribe({
         next: (data) =>{
-          this.library = data;
-          console.log(this.library);
-
+          this.collection = data.collection;
+          console.log(this.collection);
         },
         error: (e) => console.error(e)
       });

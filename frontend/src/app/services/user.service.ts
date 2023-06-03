@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from '../models/user.model';
+import {Book} from '../models/book.model';
 
 const baseUrl = 'http://localhost:4242/api/user';
 
@@ -14,6 +15,10 @@ export class UserService {
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(baseUrl);
+  }
+
+  getLibrary(id: Number): Observable<User> {
+    return this.http.get<User>(`${baseUrl}/${id}/?collection=true`)
   }
 
   get(id: Number): Observable<User> {

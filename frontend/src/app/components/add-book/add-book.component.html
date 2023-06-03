@@ -1,7 +1,7 @@
 <h1>Add book</h1>
 
 {{ model | json }}
-<form #regForm="ngForm" (ngSubmit)="addNewUser()">
+<form #regForm="ngForm" (ngSubmit)="addNewBook()">
 
   <mat-form-field>
     <input matInput placeholder="Title" required [(ngModel)]="model.title" name="title">

@@ -20,10 +20,6 @@ export class BookService {
     return this.http.get<Book>(`${baseUrl}/${id}`);
   }
 
-  getLibrary(id: Number): Observable<Book[]> {
-    return this.http.get<Book[]>(`${baseUrl}/lib/${id}`);
-  }
-
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
   }
