@@ -1,8 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Book } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
-import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./booklist.component.css']
 })
 export class BooklistComponent implements OnInit{
-  library?: Book[];
+  library!: Book[];
 
   constructor(
     private route: ActivatedRoute,
@@ -19,14 +17,14 @@ export class BooklistComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.retrieveBooks()
+    this.retrieveLib()
 
   }
 
-  retrieveBooks(): void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+  retrieveLib(): void{
+    const userId = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.bookService.getLibrary(id)
+    this.bookService.getLibrary(userId)
       .subscribe({
         next: (data) =>{
           this.library = data;

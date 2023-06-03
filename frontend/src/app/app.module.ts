@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BooklistComponent } from './components/booklist/booklist.component';
 import { BookComponent } from './components/book/book.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BookComponent } from './components/book/book.component';
     RegisterComponent,
     BooklistComponent,
     BookComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
