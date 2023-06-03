@@ -1,1 +1,17 @@
-<p>login works!</p>
+<h1>Login Form</h1>
+
+{{ model | json }}
+
+<form #regForm="ngForm" (ngSubmit)="signin()">
+
+  <mat-form-field>
+    <input matInput placeholder="Email" required [(ngModel)]="model.email" name="email">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Login</button>
+</form>
+
+<div *ngIf="submitted">
+  <h4>Login Completed</h4>
+</div>
+

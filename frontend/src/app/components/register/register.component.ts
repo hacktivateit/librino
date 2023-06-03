@@ -14,7 +14,7 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService){}
 
-  addNewUser(){
+  signup(){
     console.log(this.model);
     this.authService.signup(this.model)
     .subscribe({

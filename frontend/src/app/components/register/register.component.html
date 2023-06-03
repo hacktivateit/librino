@@ -1,7 +1,7 @@
 <h1>Registration Form</h1>
 
 {{ model | json }}
-<form #regForm="ngForm" (ngSubmit)="addNewUser()">
+<form #regForm="ngForm" (ngSubmit)="signup()">
 
   <mat-form-field>
     <input matInput placeholder="Name" required [(ngModel)]="model.name" name="name">
