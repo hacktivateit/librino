@@ -12,7 +12,7 @@ export const getAllBooks = async (
 
     const allBooks: Book[] = await client.findMany({ include: { owner: includeOwner }});
 
-    res.status(200).json({ data: allBooks });
+    res.status(200).json(allBooks);
   } catch (error) {
     console.error("Error in getAllBooks:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -36,7 +36,7 @@ export const getBookById = async (
     const book = await client.findUnique({ where: { id: bookId }, include:{owner: includeOwner} });
 
     if (book) {
-      res.status(200).json({ data: book });
+      res.status(200).json( book );
     } else {
       res.status(404).json({ error: "Book not found" });
     }
@@ -61,7 +61,7 @@ export const getLibraryByUserId = async (
     const libr = await client.findMany({where:{owner:{some:{userId:{equals: uid}}}},include:{owner:false}})
 
     if (libr) {
-      res.status(200).json({ data: libr });
+      res.status(200).json( libr );
     } else {
       res.status(404).json({ error: "User  not found" });
     }
@@ -81,7 +81,7 @@ export const createBook = async (
       data: { ...bookData },
     });
 
-    res.status(201).json({ data: book });
+    res.status(201).json( book );
   } catch (error) {
     console.error("Error in createBook:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -108,7 +108,7 @@ export const updateBook = async (
     });
 
     if (updatedBook) {
-      res.status(200).json({ data: updatedBook });
+      res.status(200).json( updatedBook );
     } else {
       res.status(404).json({ error: "Book not found" });
     }
@@ -133,7 +133,7 @@ export const deleteBook = async (
     const deletedBook = await client.delete({ where: { id: bookId } });
 
     if (deletedBook) {
-      res.status(200).json({ data: {} });
+      res.status(200).json( {} );
     } else {
       res.status(404).json({ error: "Book not found" });
     }

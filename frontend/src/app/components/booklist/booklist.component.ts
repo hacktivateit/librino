@@ -15,8 +15,7 @@ export class BooklistComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService,
-    private BookService: BookService,
+    private bookService: BookService,
   ){}
 
   ngOnInit(): void {
@@ -25,10 +24,9 @@ export class BooklistComponent implements OnInit{
   }
 
   retrieveBooks(): void{
-    // const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    // this.userService.getLibrary(id)
-    this.BookService.getAll()
+    this.bookService.getLibrary(id)
       .subscribe({
         next: (data) =>{
           this.library = data;

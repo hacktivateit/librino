@@ -12,7 +12,7 @@ export const getAllUsers = async (
 
     const allUsers: User[] = await client.findMany({ include: { library: includeLibrary }});
 
-    res.status(200).json({ data: allUsers });
+    res.status(200).json( allUsers );
   } catch (error) {
     console.error("Error in getAllUsers:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -34,7 +34,7 @@ export const getUserById = async (
     const user = await client.findUnique({  where: { id: userId }});
 
     if (user) {
-      res.status(200).json({ data: user });
+      res.status(200).json( user);
     } else {
       res.status(404).json({ error: "User not found" });
     }
@@ -54,7 +54,7 @@ export const createUser = async (
       data: { ...userData },
     });
 
-    res.status(201).json({ data: user });
+    res.status(201).json( user );
   } catch (error) {
     console.error("Error in createUser:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -81,7 +81,7 @@ export const updateUser = async (
     });
 
     if (updatedUser) {
-      res.status(200).json({ data: updatedUser });
+      res.status(200).json( updatedUser );
     } else {
       res.status(404).json({ error: "User not found" });
     }
@@ -106,7 +106,7 @@ export const deleteUser = async (
     const deletedUser = await client.delete({ where: { id: userId } });
 
     if (deletedUser) {
-      res.status(200).json({ data: {} });
+      res.status(200).json({});
     } else {
       res.status(404).json({ error: "User not found" });
     }
