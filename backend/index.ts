@@ -2,6 +2,7 @@ import express, {Express, Request, Response} from 'express';
 import dotenv from 'dotenv';
 import userRouter from './routes/user';
 import bookRouter from './routes/book';
+import authRouter from './routes/auth';
 
 // Read config from .env
 dotenv.config()
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 // Use express json middleware
 app.use(express.json());
 
+app.use('/api/auth/',authRouter);
 app.use('/api/user/',userRouter);
 app.use('/api/book/',bookRouter);
 
