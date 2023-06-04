@@ -26,11 +26,7 @@ export const getBookById = async (
   try {
     const bookId = parseInt(req.params.id);
 
-    //TESTING
-    console.log('----HEADERS----');
-    console.log(req.headers);
-    console.log('----HEADERS----');
-    //TESTING
+    const userToken = req.headers["authorization"];
 
     if (isNaN(bookId)) {
       res.status(400).json({ error: "The ID must be a number" });

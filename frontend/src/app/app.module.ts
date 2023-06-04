@@ -34,6 +34,7 @@ import { authInterceptorProvider } from './interceptors/auth.interceptor';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
     FormsModule,
     MatToolbarModule,
@@ -42,7 +43,6 @@ import { authInterceptorProvider } from './interceptors/auth.interceptor';
     MatFormFieldModule,
     MatIconModule,
     AppRoutingModule,
-    HttpClientModule,
   ],
   providers: [authInterceptorProvider],
   bootstrap: [AppComponent]

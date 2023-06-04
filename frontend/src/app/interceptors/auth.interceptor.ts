@@ -1,18 +1,25 @@
-import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { StorageService } from '../services/storage.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const user = localStorage.getItem("auth-user");
+  constructor( private storage: StorageService){}
 
-    if (user) {
-      const id = JSON.parse(user).id;
-      const cloned = req.clone( {headers : req.headers.set("Authorization", "Bearer " + 42)});
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    //If User is logged in change add the token (id) to the header
+    if (this.storage.isLoggedIn()){
+      const id = this.storage.getUser().id;
+      const cloned = req.clone({
+        headers : req.headers.set("Authorization", id.toString())
+        });
+      console.log("id added to the request");
       return next.handle(cloned);
     } else {
+      console.log("request unchanged");
       return next.handle(req);
     }
   }
