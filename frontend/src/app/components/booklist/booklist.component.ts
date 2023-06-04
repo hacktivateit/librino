@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { BookService } from 'src/app/services/book.service';
 import { Book} from 'src/app/models/book.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class BooklistComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService,
+    private bookService: BookService,
   ){}
 
   ngOnInit(): void {
@@ -22,10 +22,10 @@ export class BooklistComponent implements OnInit{
   }
 
   retrieveLib(): void{
-    this.userService.getLibrary(1)
+    this.bookService.getAll()
       .subscribe({
         next: (data) =>{
-          this.collection = data.collection;
+          this.collection = data;
           console.log(this.collection);
         },
         error: (e) => console.error(e)

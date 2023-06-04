@@ -20,7 +20,6 @@ export class BookService {
     return this.http.get<Book>(`${baseUrl}/${id}`);
   }
 
-  //Will be removed with jwt
   create(id: Number, data: any): Observable<any> {
     return this.http.post(`${baseUrl}/${id}`, data);
   }
