@@ -25,5 +25,4 @@ export class RegisterComponent {
         error: (e) => console.error(e)
       });;
   }
-
 }

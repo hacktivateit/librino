@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,16 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private storage: StorageService,
+    private router: Router,
   ){}
 
   signin(){
-    console.log(this.model);
     this.authService.signin(this.model)
     .subscribe({
         next: (res) => {
           console.log(res);
           this.storage.saveUser(res.user)
+          // this.router.navigateByUrl('/');
           this.submitted = true;
         },
         error: (e) => console.error(e)
