@@ -26,6 +26,12 @@ export const getBookById = async (
   try {
     const bookId = parseInt(req.params.id);
 
+    //TESTING
+    console.log('----HEADERS----');
+    console.log(req.headers);
+    console.log('----HEADERS----');
+    //TESTING
+
     if (isNaN(bookId)) {
       res.status(400).json({ error: "The ID must be a number" });
       return;
@@ -46,8 +52,7 @@ export const getBookById = async (
   }
 };
 
-//A Book is always created by a user
-//SO the book i associated to that user
+//A Book is always associated with the user creating it
 export const createBook = async (
   req: Request,
   res: Response
