@@ -5,19 +5,18 @@ const token = 'auth-user';
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService {
-  constructor() {}
 
+export class StorageService {
   clean(): void {
     localStorage.clear();
   }
 
-  public saveUser(user: any): void {
+  saveUser(user: any): void {
     localStorage.removeItem(token);
     localStorage.setItem(token, JSON.stringify(user));
   }
 
-  public getUser(): any {
+  getUser(): any {
     const user = localStorage.getItem(token);
     if (user) {
       return JSON.parse(user);
@@ -26,12 +25,11 @@ export class StorageService {
     return {};
   }
 
-  public isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     const user = localStorage.getItem(token);
     if (user) {
       return true;
     }
-
     return false;
   }
 }

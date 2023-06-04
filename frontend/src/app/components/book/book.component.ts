@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit{
-  //Book will have value at runtime
-  book!: Book;
+
+  book = new Book();
 
   constructor(
     private bookService: BookService,

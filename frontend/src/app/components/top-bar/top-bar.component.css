@@ -1,3 +1,11 @@
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
+}
+
+.h-full{
+  height:100%;
+}
+
+.p-10{
+  padding: 10px;
 }

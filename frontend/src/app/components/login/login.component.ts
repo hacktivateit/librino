@@ -24,7 +24,7 @@ export class LoginComponent {
         next: (res) => {
           console.log(res);
           this.storage.saveUser(res.user)
-          // this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/');
           this.submitted = true;
         },
         error: (e) => console.error(e)

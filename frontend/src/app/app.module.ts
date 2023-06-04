@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatList, MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register/register.component';
@@ -39,6 +41,8 @@ import { authInterceptorProvider } from './interceptors/auth.interceptor';
     FormsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatListModule,
+    MatTableModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,

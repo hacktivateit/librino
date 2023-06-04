@@ -1,14 +1,23 @@
 <mat-toolbar color="primary">
 
-  <a href="/">
+  <img class="h-full p-10" src="assets/logo.png" alt="Logo librino">
+  <span>
     Librino
-  </a>
+  </span>
 
-  <span class="example-spacer"></span>
+  <span class="spacer"></span>
 
-  <a routerLink="/register">
-    <button mat-button color="warn">Register</button>
-  </a>
+  <div *ngIf="!isLoggedIn()">
+    <a routerLink="/login">
+      <button mat-flat-button color="primary">Login</button>
+    </a>
+    <a routerLink="/register">
+      <button mat-raised-button color="warn">Register</button>
+    </a>
+  </div>
+  <div *ngIf="isLoggedIn()">
+    Welcome {{username}}
+  </div>
 
 
 </mat-toolbar>
