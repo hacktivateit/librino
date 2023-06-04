@@ -1,17 +1,11 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  intercept(req: HttpRequest<any>,
-            next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     try {
       const user = localStorage.getItem("auth-user");
 
@@ -19,8 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
         const parsedUser = JSON.parse(user);
         if (parsedUser.id) {
           const id = parsedUser.id;
-          const cloned = req.clone(
-              {headers : req.headers.set("Authorization", "Bearer " + id)});
+          const cloned = req.clone( {headers : req.headers.set("Authorization", "Bearer " + id)});
 
           return next.handle(cloned);
         }
@@ -32,3 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req);
   }
 }
+
+export const authInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+];

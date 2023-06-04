@@ -20,6 +20,7 @@ import { BooklistComponent } from './components/booklist/booklist.component';
 import { BookComponent } from './components/book/book.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { authInterceptorProviders } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
