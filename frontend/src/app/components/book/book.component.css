@@ -1,0 +1,19 @@
+.container{
+  display:flex;
+  flex-direction: col;
+}
+
+.mr-5{
+  margin-right: 1.25rem;
+}
+
+.w-3-5{
+  width:60%;
+}
+.w-2-5{
+  width:40%;
+}
+
+w-full{
+  width: 100%;
+}

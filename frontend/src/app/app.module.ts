@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatList, MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register/register.component';
@@ -43,6 +45,8 @@ import { authInterceptorProvider } from './interceptors/auth.interceptor';
     MatButtonModule,
     MatListModule,
     MatTableModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
