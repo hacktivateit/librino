@@ -22,7 +22,7 @@ export class LoginComponent {
     .subscribe({
         next: (res) => {
           console.log(res);
-          this.storage.saveUser({name:"matteo"})
+          this.storage.saveUser(res.user)
           this.submitted = true;
         },
         error: (e) => console.error(e)
