@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditbookComponent implements OnInit{
   book = new Book()
   submitted=false;
+  message="";
 
   constructor(
     private bookService: BookService,
@@ -18,27 +19,6 @@ export class EditbookComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.retrieveBook();
-  }
-  updateBook():void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.bookService.update(id,this.book)
-      .subscribe({
-        next: (data) =>{
-          this.book = data;
-          console.log(this.book);
-          this.submitted=true
-        },
-        error: (e) => {
-          if (e.status == 401)
-          console.log("NON AUTORIZZATO");
-          else
-          console.log("NON TROVATO");
-        }
-      });
-  }
-
-  retrieveBook(): void{
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.bookService.get(id)
@@ -47,12 +27,20 @@ export class EditbookComponent implements OnInit{
           this.book = data;
           console.log(this.book);
         },
-        error: (e) => {
-          if (e.status == 401)
-          console.log("NON AUTORIZZATO");
-          else
-          console.log("NON TROVATO");
-        }
+        error: (e) => this.message=e.error.error
+      });
+  }
+
+  updateBook():void{
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.bookService.update(id,this.book)
+      .subscribe({
+        next: (data) =>{
+          this.book = data;
+          console.log(this.book);
+          this.message="Book updated!";
+        },
+        error: (e) => this.message=e.error.error
       });
   }
 }

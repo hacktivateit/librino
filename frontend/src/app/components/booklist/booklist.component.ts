@@ -9,8 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./booklist.component.css']
 })
 export class BooklistComponent implements OnInit{
- collection!: Book[]
-displayedColumns: string[] = ['actions','title', 'author', 'synopsis', 'completion', 'ISBN'];
+  collection!: Book[];
+  error = "";
+  empty=false;
+
+  displayedColumns: string[] = ['actions','title', 'author', 'synopsis', 'completion', 'ISBN'];
 
   constructor(
     private route: ActivatedRoute,
@@ -18,29 +21,29 @@ displayedColumns: string[] = ['actions','title', 'author', 'synopsis', 'completi
   ){}
 
   ngOnInit(): void {
-    this.retrieveLib()
-  }
-
-  retrieveLib(): void{
     this.bookService.getAll()
       .subscribe({
         next: (data) =>{
           this.collection = data;
           console.log(this.collection);
+          if (this.collection.length == 0)
+            this.empty = true;
         },
         error: (e) => console.error(e)
       });
   }
 
   delete(id:Number):void{
-    this.bookService.delete(id)
-      .subscribe({
-        next: (data) =>{
-          this.collection = data;
-          console.log("deleted " +id);
-          //reload page
-        },
-        error: (e) => console.error(e)
-      });
+    if(confirm("Are you sure?")) {
+      this.bookService.delete(id)
+        .subscribe({
+          next: (data) =>{
+            const pos = this.collection.findIndex(b => b.id == id)
+            this.collection.splice(pos,1);
+            console.log("deleted " +id);
+          },
+          error: (e) =>  this.error = e.error.message
+        });
+    }
   }
 }

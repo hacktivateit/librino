@@ -1,20 +1,27 @@
 <h1>Book List</h1>
 
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let book of collection">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{book.title}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{book.author}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>{{book.synopsis}}</p>
-    <mat-action-row>
-      <button mat-flat-button color="primary" [routerLink]="['/book',book.id]">View Details</button>
-      <button mat-flat-button color="warn" (click)="delete(book.id)">Delete</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
-
+<div *ngIf="empty">
+  <p>You don't have book in your library</p>
+</div>
+<div *ngIf="!empty">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let book of collection">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{book.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{book.author}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{book.synopsis}}</p>
+      <mat-action-row>
+        <button mat-flat-button color="primary" [routerLink]="['/book',book.id]">View Details</button>
+        <button mat-flat-button color="warn" (click)="delete(book.id)">Delete</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div *ngIf="error">
+  <p>{{error}}</p>
+</div>

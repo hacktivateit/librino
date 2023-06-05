@@ -1,7 +1,7 @@
 <h1>Edit book</h1>
 <div class="flex">
 
-  <form class="flex flex-col flex-start w-full" #regForm="ngForm" (ngSubmit)="updateBook()">
+  <form class="flex flex-col flex-start w-full" #editForm="ngForm" (ngSubmit)="updateBook()">
 
     <mat-form-field>
       <mat-label>Title</mat-label>
@@ -19,15 +19,17 @@
     </mat-form-field>
 
     <mat-form-field>
+      <mat-label>#Complete</mat-label>
+      <input matInput type="number" placeholder="#Complete" [(ngModel)]="book.completion" name="completion">
+    </mat-form-field>
+
+    <mat-form-field>
       <mat-label>Synopsis</mat-label>
       <textarea matInput placeholder="Synopsis" [(ngModel)]="book.synopsis" name="synopsis"></textarea>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Update book</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">Update book</button>
   </form>
-
-  <div *ngIf="submitted">
-    <h4>updated!</h4>
-  </div>
-
 </div>
+
+<h2>{{message}}</h2>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   model:any = {email:null};
   submitted = false;
   message = "";
@@ -18,6 +18,11 @@ export class LoginComponent {
     private storage: StorageService,
     private router: Router,
   ){}
+
+  ngOnInit(): void {
+    if (this.storage.isLoggedIn())
+      this.router.navigateByUrl('booklist');
+  }
 
   signin(){
     this.authService.signin(this.model)
