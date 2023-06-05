@@ -15,6 +15,7 @@ import {MatList, MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register/register.component';
@@ -47,6 +48,7 @@ import { EditbookComponent } from './components/editbook/editbook.component';
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
+    MatCardModule,
     MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,

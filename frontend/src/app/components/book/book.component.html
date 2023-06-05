@@ -1,15 +1,27 @@
 <h4>Book details</h4>
-<div class="container">
-  <div class="">
-    <img class="mr-5 " src="https://picsum.photos/400/600" alt="Book cover">
-  </div>
-  <div class="w-3-5">
-    <h2>Title</h2>
-    <p>{{book.title}}</p>
-    <h2>Author</h2>
-    <p>{{book.author}}</p>
-    <h2>ISBN</h2>
-    <p>{{book.ISBN}}</p>
-    <h2>Synopsis</h2>
-    <p>{{book.synopsis}}</p>
-  </div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{book.title}}</mat-card-title>
+    <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://picsum.photos/600/900" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{book.synopsis}}
+    </p>
+    <span>
+      <mat-icon aria-hidden="false" aria-label="ISBN icon" fontIcon="code"></mat-icon>
+      {{book.ISBN}}
+    </span>
+    <span>
+      <mat-icon aria-hidden="false" aria-label="Tick icon" fontIcon="done"></mat-icon>
+      {{book.completion}}
+    </span>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [routerLink]="['/editbook',book.id]">EDIT</button>
+    <button mat-button>DELETE</button>
+  </mat-card-actions>
+</mat-card>
+

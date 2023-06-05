@@ -1,1 +1,33 @@
-<p>editbook works!</p>
+<h1>Edit book</h1>
+<div class="flex">
+
+  <form class="flex flex-col flex-start w-full" #regForm="ngForm" (ngSubmit)="updateBook()">
+
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" [(ngModel)]="book.title" name="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Author</mat-label>
+      <input matInput placeholder="Author" [(ngModel)]="book.author" name="author">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>ISBN</mat-label>
+      <input matInput placeholder="ISBN" [(ngModel)]="book.ISBN" name="ISBN">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Synopsis</mat-label>
+      <textarea matInput placeholder="Synopsis" [(ngModel)]="book.synopsis" name="synopsis"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Update book</button>
+  </form>
+
+  <div *ngIf="submitted">
+    <h4>Added!</h4>
+  </div>
+
+</div>
