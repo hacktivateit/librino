@@ -6,8 +6,10 @@ import { BookComponent } from './components/book/book.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { EditbookComponent } from './components/editbook/editbook.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
+  { path: '', component: WelcomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'addbook', component: AddBookComponent },

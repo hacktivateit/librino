@@ -28,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { authInterceptorProvider } from './interceptors/auth.interceptor';
 import { EditbookComponent } from './components/editbook/editbook.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { EditbookComponent } from './components/editbook/editbook.component';
     BookComponent,
     LoginComponent,
     EditbookComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
