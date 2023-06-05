@@ -38,6 +38,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var client_1 = require("@prisma/client");
 var prisma = new client_1.PrismaClient();
+function generateFakeISBN() {
+    var isbn = '978' + Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');
+    return isbn;
+}
 function fabricateUserData() {
     var names = ["John", "Jane", "David", "Emma", "Michael", "Olivia"];
     var surnames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller"];
@@ -63,7 +67,7 @@ function fabricateBookData(userIds) {
     return titles.map(function (title, index) { return ({
         title: title,
         author: "Author ".concat(index + 1),
-        ISBN: "ISBN ".concat(index + 1),
+        ISBN: generateFakeISBN(),
         synopsis: "".concat(title, " lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in leo at enim consectetur pellentesque. Vestibulum consectetur tincidunt lacus in maximus. Ut eu fermentum libero. In ultricies, massa a gravida posuere, est erat ornare orci, vitae condimentum erat ex sit amet libero. In ut semper nulla."),
         completion: Math.floor(Math.random() * 10),
         owner: {

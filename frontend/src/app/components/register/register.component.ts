@@ -11,6 +11,7 @@ export class RegisterComponent {
 
   model = new User();
   submitted = false;
+  message = "Registration complete, now login";
 
   constructor(private authService: AuthService){}
 
@@ -20,9 +21,11 @@ export class RegisterComponent {
     .subscribe({
         next: (res) => {
           console.log(res);
-          this.submitted = true;
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          this.message = e.error.message;
+          this.submitted = true;
+        }
       });;
   }
 }

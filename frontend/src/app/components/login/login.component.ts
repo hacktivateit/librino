@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   model:any = {email:null};
   submitted = false;
+  message = "";
 
   constructor(
     private authService: AuthService,
@@ -25,9 +26,11 @@ export class LoginComponent {
           console.log(res);
           this.storage.saveUser(res.user)
           this.router.navigateByUrl('booklist');
-          this.submitted = true;
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          this.message = e.error.message;
+          this.submitted = true;
+        }
       });;
   }
 }

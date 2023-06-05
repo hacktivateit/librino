@@ -1,24 +1,24 @@
 <h1>Registration Form</h1>
+<div class="flex">
 
-{{ model | json }}
-<form #regForm="ngForm" (ngSubmit)="signup()">
+  <form class="flex flex-col flex-start w-full" #regForm="ngForm" (ngSubmit)="signup()">
 
-  <mat-form-field>
-    <input matInput placeholder="Name" required [(ngModel)]="model.name" name="name">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Name" required [(ngModel)]="model.name" name="name">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Username" [(ngModel)]="model.surname" name="surname">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Username" [(ngModel)]="model.surname" name="surname">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Email" required [(ngModel)]="model.email" name="email">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" required [(ngModel)]="model.email" name="email">
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Register</button>
-</form>
-
-<div *ngIf="submitted">
-  <h4>Registration Complete</h4>
+    <button mat-raised-button color="primary" type="submit" [disabled]="regForm.invalid">Register</button>
+  </form>
 </div>
 
+<div *ngIf="submitted">
+  <h3>{{message}}</h3>
+</div>

@@ -2,6 +2,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+function generateFakeISBN(): string {
+  const isbn = '978' + Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');
+  return isbn;
+}
+
+
 function fabricateUserData() {
   const names = ["John", "Jane", "David", "Emma", "Michael", "Olivia"];
   const surnames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller"];
@@ -30,7 +36,7 @@ function fabricateBookData(userIds: number[]) {
   return titles.map((title, index) => ({
     title,
     author: `Author ${index + 1}`,
-    ISBN: `ISBN ${index + 1}`,
+    ISBN: generateFakeISBN(),
     synopsis: `${title} lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in leo at enim consectetur pellentesque. Vestibulum consectetur tincidunt lacus in maximus. Ut eu fermentum libero. In ultricies, massa a gravida posuere, est erat ornare orci, vitae condimentum erat ex sit amet libero. In ut semper nulla.`,
     completion: Math.floor(Math.random() * 10),
     owner: {
