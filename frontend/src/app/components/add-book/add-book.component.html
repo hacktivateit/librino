@@ -1,28 +1,33 @@
 <h1>Add book</h1>
+<div class="flex">
 
-{{ model | json }}
-<form #regForm="ngForm" (ngSubmit)="addNewBook()">
+  <form class="flex flex-col flex-start w-full" #regForm="ngForm" (ngSubmit)="addNewBook()">
 
-  <mat-form-field>
-    <input matInput placeholder="Title" required [(ngModel)]="model.title" name="title">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" [(ngModel)]="model.title" name="title">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Author" [(ngModel)]="model.author" name="author">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Author</mat-label>
+      <input matInput placeholder="Author" [(ngModel)]="model.author" name="author">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="ISBN" required [(ngModel)]="model.ISBN" name="ISBN">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>ISBN</mat-label>
+      <input matInput placeholder="ISBN" [(ngModel)]="model.ISBN" name="ISBN">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Synopsis" required [(ngModel)]="model.synopsis" name="synopsis">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Synopsis</mat-label>
+      <textarea matInput placeholder="Synopsis" [(ngModel)]="model.synopsis" name="synopsis"></textarea>
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Add book to your library</button>
-</form>
+    <button mat-raised-button color="primary" type="submit">Add book to your library</button>
+  </form>
 
-<div *ngIf="submitted">
-  <h4>Added!</h4>
+  <div *ngIf="submitted">
+    <h4>Added!</h4>
+  </div>
+
 </div>
-

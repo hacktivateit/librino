@@ -19,6 +19,7 @@ export class AddBookComponent {
     .subscribe({
         next: (res) => {
           console.log(res);
+          this.submitted=true;
         }
     });;
   }
