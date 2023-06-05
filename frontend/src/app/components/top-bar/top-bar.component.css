@@ -9,3 +9,12 @@
 .p-10{
   padding: 10px;
 }
+
+.flex{
+  display:flex;
+}
+
+.my-auto{
+  margin-top:auto;
+  margin-bottom:auto;
+}

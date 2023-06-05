@@ -30,7 +30,12 @@ retrieveBook(): void{
         this.book = data;
         console.log(this.book);
       },
-      error: (e) => console.error(e)
+      error: (e) => {
+          if (e.status == 401)
+            console.log("NON AUTORIZZATO");
+          else
+            console.log("NON TROVATO");
+        }
     });
   }
 }
