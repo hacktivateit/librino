@@ -1,7 +1,21 @@
 .flex{
-  display:flex;
+  display: flex;
 }
 
 .flex-col{
-  flex-direction: col;
+  flex-direction: column;
 }
+
+.flex-start{
+  align-items: flex-start;
+}
+
+.w-full{
+  width: 100%;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+
