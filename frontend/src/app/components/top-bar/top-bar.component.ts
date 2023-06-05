@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,7 +9,10 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class TopBarComponent {
 
-  constructor(private storage: StorageService){}
+  constructor(
+    private storage: StorageService,
+    private router: Router,
+  ){}
   username= ""
 
   isLoggedIn(): boolean {
@@ -19,6 +23,12 @@ export class TopBarComponent {
     }
     else
       return false;
+  }
+
+  signout(){
+    console.log("signed out");
+    this.storage.clean();
+    this.router.navigateByUrl('/');
   }
 
 }

@@ -25,15 +25,15 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['booklist']">
           <mat-icon>book</mat-icon>
           <span>Library</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['/']">
           <mat-icon>add</mat-icon>
           <span>Add book</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="signout()">
           <mat-icon>logout</mat-icon>
           <span>Logout</span>
         </button>

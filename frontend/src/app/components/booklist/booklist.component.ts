@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BooklistComponent implements OnInit{
  collection!: Book[]
-displayedColumns: string[] = ['title', 'author', 'synopsis', 'completion', 'ISBN'];
+displayedColumns: string[] = ['actions','title', 'author', 'synopsis', 'completion', 'ISBN'];
 
   constructor(
     private route: ActivatedRoute,

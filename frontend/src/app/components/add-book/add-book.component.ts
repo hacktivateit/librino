@@ -14,12 +14,8 @@ export class AddBookComponent {
   constructor(private bookService: BookService){}
 
   addNewBook(){
-    //For now the owner add by hand
-    const id = 1;
-    //i will add it by the JWT token in the backend
-
     console.log(this.model);
-    this.bookService.create(1,this.model)
+    this.bookService.create(this.model)
     .subscribe({
         next: (res) => {
           console.log(res);
