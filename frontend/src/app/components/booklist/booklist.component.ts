@@ -19,7 +19,6 @@ displayedColumns: string[] = ['actions','title', 'author', 'synopsis', 'completi
 
   ngOnInit(): void {
     this.retrieveLib()
-
   }
 
   retrieveLib(): void{
@@ -28,6 +27,18 @@ displayedColumns: string[] = ['actions','title', 'author', 'synopsis', 'completi
         next: (data) =>{
           this.collection = data;
           console.log(this.collection);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  delete(id:Number):void{
+    this.bookService.delete(id)
+      .subscribe({
+        next: (data) =>{
+          this.collection = data;
+          console.log("deleted " +id);
+          //reload page
         },
         error: (e) => console.error(e)
       });

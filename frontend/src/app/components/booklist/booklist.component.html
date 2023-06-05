@@ -1,4 +1,4 @@
-<h4>Book List</h4>
+<h1>Book List</h1>
 
 <mat-accordion>
   <mat-expansion-panel *ngFor="let book of collection">
@@ -12,8 +12,8 @@
     </mat-expansion-panel-header>
     <p>{{book.synopsis}}</p>
     <mat-action-row>
-      <button mat-button color="primary">View Details</button>
-      <button mat-button color="warn">Remove</button>
+      <button mat-flat-button color="primary" [routerLink]="['/book',book.id]">View Details</button>
+      <button mat-flat-button color="warn" (click)="delete(book.id)">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
