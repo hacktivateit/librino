@@ -5,11 +5,13 @@ import { BooklistComponent } from './components/booklist/booklist.component';
 import { BookComponent } from './components/book/book.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { EditbookComponent } from './components/editbook/editbook.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'addbook', component: AddBookComponent },
+  { path: 'editbook/:id', component: EditbookComponent },
   { path: 'booklist', component: BooklistComponent },
   { path: 'book/:id', component: BookComponent },
 ];

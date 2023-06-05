@@ -26,6 +26,7 @@ import { BookComponent } from './components/book/book.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { authInterceptorProvider } from './interceptors/auth.interceptor';
+import { EditbookComponent } from './components/editbook/editbook.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { authInterceptorProvider } from './interceptors/auth.interceptor';
     BooklistComponent,
     BookComponent,
     LoginComponent,
+    EditbookComponent,
   ],
   imports: [
     BrowserModule,
