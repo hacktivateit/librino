@@ -17,26 +17,42 @@ export class EditbookComponent implements OnInit{
     private route: ActivatedRoute,
   ){}
 
-ngOnInit(): void {
-  this.retrieveBook();
-}
-updateBook():void{}
-
-retrieveBook(): void{
-const id = Number(this.route.snapshot.paramMap.get('id'));
-
-this.bookService.get(id)
-  .subscribe({
-    next: (data) =>{
-      this.book = data;
-      console.log(this.book);
-    },
-    error: (e) => {
-        if (e.status == 401)
+  ngOnInit(): void {
+    this.retrieveBook();
+  }
+  updateBook():void{
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.bookService.update(id,this.book)
+      .subscribe({
+        next: (data) =>{
+          this.book = data;
+          console.log(this.book);
+          this.submitted=true
+        },
+        error: (e) => {
+          if (e.status == 401)
           console.log("NON AUTORIZZATO");
-        else
+          else
           console.log("NON TROVATO");
-      }
-  });
-}
+        }
+      });
+  }
+
+  retrieveBook(): void{
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.bookService.get(id)
+      .subscribe({
+        next: (data) =>{
+          this.book = data;
+          console.log(this.book);
+        },
+        error: (e) => {
+          if (e.status == 401)
+          console.log("NON AUTORIZZATO");
+          else
+          console.log("NON TROVATO");
+        }
+      });
+  }
 }
