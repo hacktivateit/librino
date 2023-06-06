@@ -1,4 +1,4 @@
-# librino
+# 📚librino
 super small books manager
 
 ## Manual deploy
