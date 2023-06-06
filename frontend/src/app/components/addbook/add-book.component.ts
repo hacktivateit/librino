@@ -9,19 +9,20 @@ import { BookService } from 'src/app/services/book.service'
 })
 export class AddBookComponent {
   model = new Book();
-  submitted = false;
+  message="";
 
   constructor(private bookService: BookService){}
 
   addNewBook(){
     console.log(this.model);
     this.bookService.create(this.model)
-    .subscribe({
+      .subscribe({
         next: (res) => {
           console.log(res);
-          this.submitted=true;
-        }
-    });;
+          this.message="Book added!";
+        },
+        error: (e) => this.message = e.error.error
+      });;
   }
 
 }

@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditbookComponent implements OnInit{
   book = new Book()
-  submitted=false;
   message="";
 
   constructor(

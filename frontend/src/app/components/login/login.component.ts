@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
   model:any = {email:null};
-  submitted = false;
   message = "";
 
   constructor(
@@ -33,8 +32,7 @@ export class LoginComponent implements OnInit{
           this.router.navigateByUrl('booklist');
         },
         error: (e) => {
-          this.message = e.error.message;
-          this.submitted = true;
+          this.message = e.error.error;
         }
       });;
   }

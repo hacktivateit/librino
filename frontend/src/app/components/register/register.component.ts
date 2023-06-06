@@ -8,10 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
   model = new User();
-  submitted = false;
-  message = "Registration complete, now login";
+  message="";
 
   constructor(private authService: AuthService){}
 
@@ -21,10 +19,10 @@ export class RegisterComponent {
     .subscribe({
         next: (res) => {
           console.log(res);
+          this.message = "Registration complete";
         },
         error: (e) => {
-          this.message = e.error.message;
-          this.submitted = true;
+          this.message = e.error.error;
         }
       });;
   }
