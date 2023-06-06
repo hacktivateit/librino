@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  db:
+    build:
+      context: './db/'
+    container_name: "librino-db"
+
+  backend:
+    build:
+      context: './backend/'
+    depends_on:
+      - db
+    restart: always
+    container_name: "librino-backend"
+
+  webserver:
+    build:
+      context: './frontend/'
+    depends_on:
+      - db
+      - backedn
+    container_name: "librino-frontend"
