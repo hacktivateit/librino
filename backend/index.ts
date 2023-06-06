@@ -3,21 +3,12 @@ import dotenv from 'dotenv';
 import bookRouter from './routes/book';
 import authRouter from './routes/auth';
 import checkAuth from './middlewares/checkAuth';
-const cors = require('cors');
 
 // Read config from .env
 dotenv.config()
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
-
-var corsOptions = {
-  origin: "*"
-};
-
-app.use(cors(corsOptions));
-
-
 // Use express json middleware
 app.use(express.json());
 
