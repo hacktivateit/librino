@@ -7,7 +7,6 @@ function generateFakeISBN(): string {
   return isbn;
 }
 
-
 function fabricateUserData() {
   const names = ["John", "Jane", "David", "Emma", "Michael", "Olivia"];
   const surnames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller"];
@@ -68,4 +67,3 @@ async function seedDatabase() {
 }
 
 seedDatabase();
-

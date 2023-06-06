@@ -3,6 +3,7 @@ import { Book, PrismaClient } from "@prisma/client";
 
 const client = new PrismaClient().book;
 
+//OnLy get the book with removedAt not NULL
 export const getAllBooks = async (
   req: Request,
   res: Response
@@ -10,7 +11,7 @@ export const getAllBooks = async (
   try {
     const userId = Number(req.headers["authorization"]);
     const allBooks: Book[] = await client.findMany({
-      where: { owner: { id: { equals: userId } }, removedAt: { not: null } },
+      where: { owner: { id: { equals: userId } }, removedAt: { equals: null } },
     });
     res.status(200).json(allBooks);
   } catch (error) {
