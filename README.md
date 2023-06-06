@@ -9,6 +9,7 @@ Postgres
 ```sh
 cd db
 docker build -t librino-db .
+docker run -p 5432:5432 librino-db
 ```
 
 ## BACKEND
