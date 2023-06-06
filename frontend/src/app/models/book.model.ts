@@ -13,7 +13,7 @@ export class Book {
   owner?: User;
 }
 
-//placeholder while developing, i will add the prisma generated types
+//placeholder while developing, i will add the prisma generated types at the end
 //import { User } from '../../../../backend/node_modules/@prisma/client';
 
 // Prisma still doesn't support multiple output folder when generating the client
