@@ -1,6 +1,5 @@
 import express, {Express, Request, Response} from 'express';
 import dotenv from 'dotenv';
-import userRouter from './routes/user';
 import bookRouter from './routes/book';
 import authRouter from './routes/auth';
 import checkAuth from './middlewares/checkAuth';

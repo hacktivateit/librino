@@ -2,6 +2,9 @@ FROM node:18.16-alpine3.18 AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY . .
+sed -i "s/localhost/backend/" ./src/app/services/auth.service.ts
+sed -i "s/localhost/backend/" ./src/app/services/book.service.ts
+sed -i "s/localhost/backend/" ./src/app/services/user.service.ts
 RUN npm run build
 
 # Stage 2: Serve the compiled application with Nginx
