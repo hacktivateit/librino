@@ -39,7 +39,7 @@ npm run build
 npm run serve
 ```
 
-## Docker
+## Docker - Containerized deploy
 
 ### Start the container
 ```sh
@@ -50,4 +50,4 @@ docker-compose up
 docker exec -it librino-backend '/bin/sh'
 npm run migrate
 ```
-The container are working, but i was not able to disable cors for local testing
+The containers are working, but i was not able to disable cors for local testing
