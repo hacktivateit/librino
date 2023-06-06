@@ -1,5 +1,4 @@
-# Stage 1: Build the Angular application
-FROM node:lts-alpine AS builder
+FROM node:18.16-alpine3.18 AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY . .
