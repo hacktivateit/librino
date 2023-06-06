@@ -1,6 +1,7 @@
 # librino
 super small books manager
 
+## Manual deploy
 ## DB
 Postgres
 
