@@ -37,7 +37,6 @@ npm install
 ### Run
 
 ```sh
-npm run build
 ng serve
 ```
 
