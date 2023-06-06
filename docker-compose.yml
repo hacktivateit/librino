@@ -4,19 +4,23 @@ services:
   db:
     build:
       context: './db/'
+    ports:
+      - 5432:5432
     container_name: "librino-db"
 
-  # backend:
-  #   build:
-  #     context: './backend/'
-  #   depends_on:
-  #     - db
-  #   restart: always
-  #   container_name: "librino-backend"
+  backend:
+    build:
+      context: './backend/'
+    depends_on:
+      - db
+    container_name: "librino-backend"
 
   webserver:
     build:
       context: './frontend/'
+    ports:
+      - 80:80
     depends_on:
       - db
+      - backend
     container_name: "librino-frontend"

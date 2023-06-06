@@ -5,7 +5,6 @@ COPY . .
 RUN sed -i "s/localhost/db/" .env;
 RUN npm run build
 RUN npm run migrate
-# seed
 
-EXPOSE 80
 CMD ["npm", "run", "start"]
+# CMD ["tail", "-f", "/dev/null"]
