@@ -38,7 +38,7 @@ npm install
 
 ```sh
 npm run build
-npm run serve
+ng serve
 ```
 
 ## Docker - Containerized deploy
