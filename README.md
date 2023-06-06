@@ -40,7 +40,8 @@ npm install
 ng serve
 ```
 
-Navitate to http://localhost:4200/
+Navigate to http://localhost:4200/
+
 Login with test user john.smith@example.com
 
 
