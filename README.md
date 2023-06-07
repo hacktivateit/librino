@@ -46,7 +46,12 @@ Login with test user john.smith@example.com
 
 
 ## Docker - Containerized deploy
-
+The entire project it's containerized using docker-compose
+### Install
+Install all the dependencies, execute in both the frontend and backend
+```sh
+npm install
+```
 ### Start the container
 ```sh
 docker-compose up
@@ -56,4 +61,3 @@ docker-compose up
 docker exec -it librino-backend '/bin/sh'
 npm run migrate
 ```
-The containers are working, but i was not able to disable cors for local testing
