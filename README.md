@@ -40,6 +40,11 @@ npm install
 ng serve
 ```
 
+Navigate to http://localhost:4200/
+
+Login with test user john.smith@example.com
+
+
 ## Docker - Containerized deploy
 
 ### Start the container
